@@ -1,0 +1,125 @@
+:host {
+  --project-primary: #135bec;
+  display: block;
+}
+
+.project-shell {
+  color: #172033;
+  font-family: 'Inter', sans-serif;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+}
+
+.project-sidebar {
+  min-height: calc(100vh - 73px);
+  width: 255px;
+  flex: 0 0 255px;
+}
+
+.project-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(19, 91, 236, 0.1);
+}
+
+.project-sidebar .nav-link {
+  border: 0;
+  border-radius: 8px;
+  color: #687386;
+  padding: 11px 14px;
+  background: transparent;
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+.project-sidebar .nav-link:hover {
+  background: #f0f3f8;
+  color: var(--project-primary);
+}
+
+.project-sidebar .nav-link.active {
+  background: var(--project-primary);
+  color: #fff;
+  box-shadow: 0 5px 12px rgba(19, 91, 236, 0.2);
+}
+
+.help-box {
+  background: #f6f7f9;
+}
+
+.project-content {
+  min-width: 0;
+}
+
+.content-panel {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.diagram-placeholder {
+  min-height: 310px;
+  border-style: dashed !important;
+  border-width: 2px !important;
+  background: #f8fafc;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.diagram-placeholder:hover {
+  border-color: rgba(19, 91, 236, 0.5) !important;
+  background: #f6f9ff;
+}
+
+.diagram-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--project-primary);
+  background: rgba(19, 91, 236, 0.1);
+}
+
+.diagram-icon .material-symbols-outlined {
+  font-size: 34px;
+}
+
+.summary-box {
+  background: rgba(19, 91, 236, 0.04);
+  border-color: rgba(19, 91, 236, 0.14) !important;
+}
+
+.breadcrumb-icon {
+  font-size: 16px;
+}
+
+.mobile-tabs {
+  scrollbar-width: thin;
+}
+
+.table th {
+  color: #748096;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.table td {
+  font-size: 0.88rem;
+}
+
+@media (max-width: 575.98px) {
+  .content-panel {
+    border-radius: 8px !important;
+  }
+
+  .diagram-placeholder {
+    min-height: 230px;
+  }
+}

@@ -1,0 +1,112 @@
+<div class="project-shell min-vh-100 bg-light">
+  <header class="navbar bg-white border-bottom sticky-top px-3 px-lg-4 py-3">
+    <div class="container-fluid px-0">
+      <a routerLink="/dashboard" class="navbar-brand d-flex align-items-center gap-2 text-primary fw-bold mb-0">
+        <span class="material-symbols-outlined">account_tree</span>
+        <span>ONTOLOGY</span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <a routerLink="/dashboard" class="btn btn-light btn-sm d-flex align-items-center gap-1">
+          <span class="material-symbols-outlined fs-6">arrow_back</span>
+          <span class="d-none d-sm-inline">Back to projects</span>
+        </a>
+        <button class="btn btn-light btn-sm icon-button" aria-label="Notifications">
+          <span class="material-symbols-outlined fs-6">notifications</span>
+        </button>
+        <button class="btn btn-light btn-sm icon-button" aria-label="Account">
+          <span class="material-symbols-outlined fs-6">person</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="d-flex">
+    <aside class="project-sidebar d-none d-lg-flex flex-column bg-white border-end p-4">
+      <div class="d-flex align-items-center gap-3 mb-4">
+        <div class="project-icon rounded-3 d-flex align-items-center justify-content-center">
+          <span class="material-symbols-outlined text-primary">architecture</span>
+        </div>
+        <div>
+          <h2 class="h6 fw-bold mb-1">{{ projectName }}</h2>
+          <p class="small text-secondary mb-0">Design Phase</p>
+        </div>
+      </div>
+      <nav class="nav flex-column gap-1" aria-label="Project sections">
+        <button class="nav-link d-flex align-items-center gap-3 text-start" [class.active]="activeSection === 'use-case'" (click)="setSection('use-case')">
+          <span class="material-symbols-outlined">description</span> Use case
+        </button>
+        <button class="nav-link d-flex align-items-center gap-3 text-start" [class.active]="activeSection === 'class'" (click)="setSection('class')">
+          <span class="material-symbols-outlined">schema</span> Class
+        </button>
+        <button class="nav-link d-flex align-items-center gap-3 text-start" [class.active]="activeSection === 'activity'" (click)="setSection('activity')">
+          <span class="material-symbols-outlined">settings_accessibility</span> Activity
+        </button>
+        <button class="nav-link d-flex align-items-center gap-3 text-start" [class.active]="activeSection === 'sequence'" (click)="setSection('sequence')">
+          <span class="material-symbols-outlined">view_stream</span> Sequence
+        </button>
+      </nav>
+      <div class="mt-auto help-box d-flex align-items-center gap-3 rounded-3 p-3">
+        <span class="material-symbols-outlined text-secondary">help</span>
+        <div><p class="small fw-semibold mb-1">Need Help?</p><a href="#" class="small text-primary">Documentation</a></div>
+      </div>
+    </aside>
+
+    <main class="flex-grow-1 project-content">
+      <div class="container-fluid px-3 px-md-4 px-xl-5 py-3 py-lg-4">
+        <div class="d-flex align-items-center gap-2 small text-secondary mb-3">
+          <a routerLink="/dashboard" class="text-decoration-none text-secondary">ONTOLOGY</a>
+          <span class="material-symbols-outlined breadcrumb-icon">chevron_right</span>
+          <span class="text-dark">{{ projectName }}</span>
+        </div>
+
+        <div class="d-lg-none d-flex gap-2 overflow-auto mb-3 mobile-tabs">
+          <button class="btn btn-sm text-nowrap" [class.btn-primary]="activeSection === 'use-case'" [class.btn-light]="activeSection !== 'use-case'" (click)="setSection('use-case')">Use case</button>
+          <button class="btn btn-sm text-nowrap" [class.btn-primary]="activeSection === 'class'" [class.btn-light]="activeSection !== 'class'" (click)="setSection('class')">Class</button>
+          <button class="btn btn-sm text-nowrap" [class.btn-primary]="activeSection === 'activity'" [class.btn-light]="activeSection !== 'activity'" (click)="setSection('activity')">Activity</button>
+          <button class="btn btn-sm text-nowrap" [class.btn-primary]="activeSection === 'sequence'" [class.btn-light]="activeSection !== 'sequence'" (click)="setSection('sequence')">Sequence</button>
+        </div>
+
+        <section *ngIf="activeSection === 'use-case'; else comingSoon" class="content-panel bg-white border rounded-3 shadow-sm p-3 p-md-4">
+          <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mb-4">
+            <div><p class="eyebrow text-primary mb-1">PROJECT DETAILS</p><h1 class="h4 fw-bold mb-0">Latest Use Case Diagram</h1></div>
+            <button class="btn btn-primary d-flex align-items-center justify-content-center gap-2" (click)="toggleEditing()">
+              <span class="material-symbols-outlined fs-6">{{ isEditing ? 'done' : 'edit' }}</span>
+              {{ isEditing ? 'Save changes' : 'Edit' }}
+            </button>
+          </div>
+
+          <div class="diagram-placeholder rounded-3 border d-flex flex-column align-items-center justify-content-center text-center p-4 mb-4">
+            <div class="diagram-icon rounded-circle d-flex align-items-center justify-content-center mb-3"><span class="material-symbols-outlined">account_tree</span></div>
+            <p class="fw-semibold mb-1">Use Case Diagram Placeholder</p>
+            <p class="small text-secondary mb-0">Click to upload or generate diagram</p>
+          </div>
+
+          <div class="summary-box d-flex gap-3 rounded-3 border p-3 mb-4">
+            <span class="material-symbols-outlined text-primary">info</span>
+            <div class="flex-grow-1">
+              <p class="fw-semibold mb-1">System Summary</p>
+              <textarea *ngIf="isEditing" class="form-control form-control-sm" [(ngModel)]="projectDescription" rows="2"></textarea>
+              <p *ngIf="!isEditing" class="small text-secondary mb-0">{{ projectDescription }}</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between gap-3 mb-2"><h2 class="h5 fw-bold mb-0">Use Case Summary</h2><span class="badge text-bg-light">{{ useCases.length }} items</span></div>
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead><tr><th>ID</th><th>Use Case Name</th><th>Actor</th><th>Description</th><th class="text-end">Actions</th></tr></thead>
+              <tbody>
+                <tr *ngFor="let useCase of useCases; let index = index">
+                  <td class="fw-semibold">{{ useCase.id }}</td><td>{{ useCase.name }}</td><td>{{ useCase.actor }}</td><td class="text-secondary">{{ useCase.description }}</td>
+                  <td class="text-end text-nowrap"><button class="btn btn-sm btn-link text-primary p-1" title="Edit"><span class="material-symbols-outlined fs-6">edit</span></button><button class="btn btn-sm btn-link text-danger p-1" title="Delete" (click)="deleteUseCase(index)"><span class="material-symbols-outlined fs-6">delete</span></button></td>
+                </tr>
+                <tr *ngIf="useCases.length === 0"><td colspan="5" class="text-center text-secondary py-4">No use cases yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <ng-template #comingSoon><section class="content-panel bg-white border rounded-3 shadow-sm p-5 text-center"><span class="material-symbols-outlined display-4 text-primary mb-3">construction</span><h1 class="h4 fw-bold">{{ activeSection | titlecase }} diagram</h1><p class="text-secondary mb-0">This project section is ready for your next diagram.</p></section></ng-template>
+      </div>
+    </main>
+  </div>
+</div>
