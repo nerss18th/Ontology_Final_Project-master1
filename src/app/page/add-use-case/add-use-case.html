@@ -1,0 +1,55 @@
+<div class="use-case-shell min-vh-100 bg-light">
+  <header class="navbar bg-white border-bottom sticky-top px-3 px-lg-4 py-3">
+    <div class="container-fluid px-0">
+      <a routerLink="/dashboard/project/1" class="navbar-brand d-flex align-items-center gap-2 text-primary fw-bold mb-0">
+        <span class="material-symbols-outlined">hub</span><span>ONTOLOGY</span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-light btn-sm icon-button" aria-label="Notifications"><span class="material-symbols-outlined fs-6">notifications</span></button>
+        <button class="btn btn-light btn-sm icon-button" aria-label="Settings"><span class="material-symbols-outlined fs-6">settings</span></button>
+        <div class="avatar rounded-circle d-flex align-items-center justify-content-center ms-2"><span class="material-symbols-outlined text-secondary">person</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="d-flex">
+    <aside class="use-case-sidebar d-none d-lg-flex flex-column bg-white border-end p-4">
+      <div class="mb-4"><h1 class="h6 fw-bold mb-1">Project Ontology</h1><p class="small text-secondary mb-0">System Design Assets</p></div>
+      <nav class="nav flex-column gap-1" aria-label="Project sections">
+        <a routerLink="/dashboard/project/1" class="nav-link active d-flex align-items-center gap-3"><span class="material-symbols-outlined">account_tree</span>Use Case</a>
+        <a routerLink="/dashboard/project/1" class="nav-link d-flex align-items-center gap-3"><span class="material-symbols-outlined">category</span>Class</a>
+        <a routerLink="/dashboard/project/1" class="nav-link d-flex align-items-center gap-3"><span class="material-symbols-outlined">schema</span>Activity</a>
+        <a routerLink="/dashboard/project/1" class="nav-link d-flex align-items-center gap-3"><span class="material-symbols-outlined">reorder</span>Sequence</a>
+      </nav>
+    </aside>
+
+    <main class="flex-grow-1 use-case-content">
+      <div class="container-fluid form-container px-3 px-md-4 py-4 py-lg-5">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <a routerLink="/dashboard/project/1" class="back-link d-flex align-items-center gap-1 small text-uppercase"><span class="material-symbols-outlined fs-6">arrow_back</span>Back to View</a>
+        </div>
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+          <div><p class="eyebrow text-primary mb-1">PROJECT 1 / USE CASE</p><h2 class="display-title fw-bold mb-0">Add Use Case</h2></div>
+          <div class="d-flex gap-2 w-100 w-md-auto">
+            <a routerLink="/dashboard/project/1" class="btn btn-light flex-fill flex-md-grow-0 px-4">Cancel</a>
+            <button class="btn btn-primary flex-fill flex-md-grow-0 px-4 d-flex align-items-center justify-content-center gap-2" (click)="addUseCase()"><span class="material-symbols-outlined fs-6">add</span>Add</button>
+          </div>
+        </div>
+
+        <form class="form-card bg-white border rounded-3 shadow-sm" (ngSubmit)="addUseCase()" novalidate>
+          <div class="form-card-header border-bottom px-3 px-md-4 py-3"><h3 class="h6 fw-bold mb-0">Use Case Summary</h3></div>
+          <div class="p-3 p-md-4">
+            <div class="row g-4 mb-4">
+              <div class="col-12 col-md-6"><label class="form-label fw-semibold">Use Case ID</label><div class="input-group"><input class="form-control bg-light" [value]="useCaseId" readonly /><span class="input-group-text bg-light text-secondary"><span class="material-symbols-outlined fs-6">fingerprint</span></span></div><div class="form-text">Generated automatically for this project.</div></div>
+              <div class="col-12 col-md-6"><label for="useCaseType" class="form-label fw-semibold">Use Case Type</label><select id="useCaseType" class="form-select" [(ngModel)]="useCaseType" name="useCaseType"><option value="business">Business Use Case</option><option value="system">System Use Case</option><option value="subfunction">Subfunction</option></select></div>
+            </div>
+            <div class="mb-4"><label for="useCaseName" class="form-label fw-semibold">Use Case Name</label><input id="useCaseName" class="form-control" [class.is-invalid]="submitted && !useCaseName.trim()" [(ngModel)]="useCaseName" name="useCaseName" placeholder="Enter a descriptive name" required /><div class="invalid-feedback">Please enter a use case name.</div></div>
+            <div class="mb-1"><label for="actor" class="form-label fw-semibold">Primary Actor</label><input id="actor" class="form-control" [class.is-invalid]="submitted && !actor.trim()" [(ngModel)]="actor" name="actor" placeholder="e.g. Member, Administrator" required /><div class="invalid-feedback">Please enter the primary actor.</div></div>
+            <div class="mb-4"><label for="description" class="form-label fw-semibold">Use Case Description</label><textarea id="description" class="form-control" [class.is-invalid]="submitted && !description.trim()" [(ngModel)]="description" name="description" rows="5" placeholder="Provide a detailed overview of the use case objectives..." required></textarea><div class="invalid-feedback">Please enter a description.</div></div>
+            <div class="note-box rounded-3 border p-3 d-flex gap-2"><span class="material-symbols-outlined text-primary">info</span><p class="small text-secondary mb-0">The new use case will be added to the Project 1 summary and assigned the next available ID.</p></div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>

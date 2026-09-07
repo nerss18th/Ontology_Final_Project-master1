@@ -6,6 +6,7 @@ import { Promotion } from './page/promotion/promotion';
 import { Dashboard } from './page/dashboard/dashboard';
 import { ProjectDetail } from './page/project-detail/project-detail';
 import { DiagramEditor } from './page/diagram-editor/diagram-editor';
+import { AddUseCase } from './page/add-use-case/add-use-case';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'promotion', component: Promotion },
   { path: 'dashboard/project/:id/edit', component: DiagramEditor },
+  { path: 'dashboard/project/:id/use-case/new', component: AddUseCase },
   { path: 'dashboard/project/:id', component: ProjectDetail },
   { path: 'dashboard', component: Dashboard },
 ];

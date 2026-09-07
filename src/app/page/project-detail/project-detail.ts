@@ -45,6 +45,13 @@ export class ProjectDetail {
     },
   ];
 
+  constructor() {
+    const savedUseCases = localStorage.getItem('ontology-use-cases');
+    if (savedUseCases) {
+      this.useCases = JSON.parse(savedUseCases) as UseCase[];
+    }
+  }
+
   setSection(section: string): void {
     this.activeSection = section;
   }
@@ -55,5 +62,6 @@ export class ProjectDetail {
 
   deleteUseCase(index: number): void {
     this.useCases.splice(index, 1);
+    localStorage.setItem('ontology-use-cases', JSON.stringify(this.useCases));
   }
 }

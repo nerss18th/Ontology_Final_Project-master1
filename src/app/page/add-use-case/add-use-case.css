@@ -1,0 +1,110 @@
+:host {
+  display: block;
+}
+
+.use-case-shell {
+  color: #172033;
+  font-family: 'Inter', sans-serif;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  background: #e9edf3;
+}
+
+.use-case-sidebar {
+  width: 255px;
+  min-height: calc(100vh - 73px);
+  flex: 0 0 255px;
+}
+
+.nav-link {
+  border-radius: 8px;
+  color: #687386;
+  padding: 11px 12px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #135bec;
+  background: rgba(19, 91, 236, 0.1);
+}
+
+.use-case-content {
+  min-width: 0;
+  background: #f6f7f9;
+}
+
+.form-container {
+  max-width: 1050px;
+}
+
+.back-link {
+  color: #135bec;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: #0d47bd;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.display-title {
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+}
+
+.form-card {
+  overflow: hidden;
+}
+
+.form-card-header {
+  background: #fafbfc;
+}
+
+.form-label {
+  color: #344054;
+  font-size: 0.9rem;
+}
+
+.form-control,
+.form-select,
+.input-group-text {
+  min-height: 44px;
+  border-color: #dfe4ec;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #135bec;
+  box-shadow: 0 0 0 0.2rem rgba(19, 91, 236, 0.12);
+}
+
+.note-box {
+  background: rgba(19, 91, 236, 0.04);
+  border-color: rgba(19, 91, 236, 0.14) !important;
+}
+
+@media (min-width: 768px) {
+  .w-md-auto {
+    width: auto !important;
+  }
+
+  .flex-md-grow-0 {
+    flex-grow: 0 !important;
+  }
+}
