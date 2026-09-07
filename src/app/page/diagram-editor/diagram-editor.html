@@ -1,0 +1,72 @@
+<div class="editor-shell min-vh-100 bg-light d-flex">
+  <aside class="editor-sidebar d-none d-lg-flex flex-column bg-white border-end p-4">
+    <div class="d-flex align-items-center gap-3 mb-5">
+      <div class="brand-icon rounded-3 d-flex align-items-center justify-content-center">
+        <span class="material-symbols-outlined text-primary">account_tree</span>
+      </div>
+      <div>
+        <h1 class="h6 fw-bold mb-1">Project Manager</h1>
+        <p class="small text-secondary mb-0">Admin Workspace</p>
+      </div>
+    </div>
+    <nav class="nav flex-column gap-1" aria-label="Main navigation">
+      <a routerLink="/dashboard" class="nav-link d-flex align-items-center gap-3"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+      <a routerLink="/dashboard/project/1" class="nav-link active d-flex align-items-center gap-3"><span class="material-symbols-outlined">database</span>Ontology</a>
+      <a routerLink="/dashboard" class="nav-link d-flex align-items-center gap-3"><span class="material-symbols-outlined">folder_open</span>Projects</a>
+      <a routerLink="/dashboard/project/1" class="nav-link d-flex align-items-center gap-3"><span class="material-symbols-outlined">schema</span>Diagrams</a>
+    </nav>
+    <a href="#" class="nav-link d-flex align-items-center gap-3 mt-auto"><span class="material-symbols-outlined">settings</span>Settings</a>
+  </aside>
+
+  <main class="flex-grow-1 min-w-0 d-flex flex-column">
+    <header class="editor-header bg-white border-bottom px-3 px-lg-4">
+      <div class="d-flex align-items-center gap-3">
+        <span class="material-symbols-outlined text-primary header-icon">diamond</span>
+        <h2 class="h6 fw-bold mb-0 d-none d-sm-block">Diagram Editor</h2>
+        <div class="search-box d-none d-md-block position-relative">
+          <span class="material-symbols-outlined position-absolute">search</span>
+          <input class="form-control bg-light border-0" placeholder="Search..." type="search" aria-label="Search" />
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <a routerLink="/dashboard/project/1" class="btn btn-light btn-sm px-3">Cancel</a>
+        <button class="btn btn-primary btn-sm px-3 d-flex align-items-center gap-2" (click)="saveChanges()">
+          <span class="material-symbols-outlined fs-6">save</span><span class="d-none d-sm-inline">Save Changes</span>
+        </button>
+        <div class="avatar rounded-circle d-flex align-items-center justify-content-center ms-2"><span class="material-symbols-outlined text-secondary">person</span></div>
+      </div>
+    </header>
+
+    <div class="editor-content flex-grow-1 overflow-auto p-3 p-md-4 p-xl-5">
+      <div class="container-fluid px-0 editor-container">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <a routerLink="/dashboard/project/1" class="breadcrumb-link small text-uppercase">Ontology</a>
+          <span class="material-symbols-outlined breadcrumb-arrow">chevron_right</span>
+          <span class="small text-uppercase text-dark">Project 1</span>
+        </div>
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-4">
+          <h1 class="display-title fw-black mb-0">Edit Use Case Diagram</h1>
+          <span *ngIf="saved" class="saved-state small d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">check_circle</span>Saved to workspace</span>
+        </div>
+
+        <section class="upload-panel bg-white border rounded-3 shadow-sm p-3 p-md-5 text-center">
+          <div #preview class="diagram-preview mx-auto rounded-3 border d-flex align-items-center justify-content-center overflow-hidden">
+            <img *ngIf="previewUrl" [src]="previewUrl" [alt]="fileName" class="preview-image" />
+            <div *ngIf="!previewUrl" class="placeholder-preview d-flex flex-column align-items-center gap-3">
+              <span class="material-symbols-outlined diagram-symbol">schema</span>
+              <span class="small text-secondary">Diagram Preview</span>
+            </div>
+          </div>
+          <p class="fw-medium mb-1">Preview: {{ fileName }}</p>
+          <p class="small text-secondary mb-4">Last modified: {{ lastModified }}</p>
+          <input #fileInput type="file" class="d-none" accept="image/*" (change)="onFileSelected($event)" />
+          <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+            <button class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2" (click)="openFilePicker()"><span class="material-symbols-outlined fs-6">upload</span>Replace Image</button>
+            <button class="btn btn-light d-flex align-items-center justify-content-center gap-2" (click)="openFullscreen()"><span class="material-symbols-outlined fs-6">visibility</span>Full Screen</button>
+          </div>
+        </section>
+        <p class="text-center text-secondary small fst-italic mt-4">Changes are saved automatically to your workspace</p>
+      </div>
+    </div>
+  </main>
+</div>

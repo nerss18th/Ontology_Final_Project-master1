@@ -1,0 +1,141 @@
+:host {
+  display: block;
+}
+
+.editor-shell {
+  color: #172033;
+  font-family: 'Inter', sans-serif;
+}
+
+.editor-sidebar {
+  width: 255px;
+  flex: 0 0 255px;
+  min-height: 100vh;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(19, 91, 236, 0.1);
+}
+
+.nav-link {
+  border-radius: 8px;
+  color: #687386;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #135bec;
+  background: #f1f4f9;
+}
+
+.nav-link.active {
+  color: #135bec;
+  background: rgba(19, 91, 236, 0.1);
+}
+
+.editor-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-icon {
+  font-size: 24px;
+}
+
+.search-box {
+  width: 256px;
+  margin-left: 12px;
+}
+
+.search-box .material-symbols-outlined {
+  left: 12px;
+  top: 8px;
+  color: #95a0b2;
+  font-size: 20px;
+}
+
+.search-box input {
+  height: 38px;
+  padding-left: 40px;
+  font-size: 0.85rem;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  background: #e9edf3;
+}
+
+.editor-content {
+  background: #f6f7f9;
+}
+
+.editor-container {
+  max-width: 1180px;
+}
+
+.breadcrumb-link {
+  color: #748096;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  color: #135bec;
+}
+
+.breadcrumb-arrow {
+  color: #b0b8c5;
+  font-size: 16px;
+}
+
+.display-title {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  letter-spacing: -0.02em;
+}
+
+.saved-state {
+  color: #198754;
+}
+
+.upload-panel {
+  min-height: 480px;
+  border-width: 2px !important;
+  border-style: dashed !important;
+}
+
+.diagram-preview {
+  width: min(300px, 100%);
+  aspect-ratio: 1;
+  background: #f1f3f6;
+  border-color: #e2e6ec !important;
+}
+
+.placeholder-preview {
+  color: #aeb7c5;
+}
+
+.diagram-symbol {
+  font-size: 64px;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: white;
+}
+
+@media (max-width: 575.98px) {
+  .upload-panel {
+    min-height: 380px;
+  }
+}
